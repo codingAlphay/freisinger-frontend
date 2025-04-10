@@ -8,7 +8,7 @@ export const Container = ({children, className}) => {
 
 export const PageContainer = ({children, className}) => {
     return (
-        <div className={`max-w-6xl mx-auto px-6 ${className}`}>
+        <div className={`max-w-6xl mx-auto px-6 w-full ${className}`}>
             {children}
         </div>
     )

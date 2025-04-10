@@ -37,7 +37,7 @@ const Navbar = () => {
     visible: { 
       opacity: 1,
       y: 0,
-      transition: { duration: 1.9, ease: [0.89, 0, 0.11, 1] }
+      transition: { duration: 1.5, ease: [0.89, 0, 0.11, 1] }
     }
   }
 
@@ -61,8 +61,8 @@ const Navbar = () => {
   }, [])
 
   return (
-    <header className={`w-[101%] mx-auto -mt-3 z-40 fixed duration-200 ${scrolled ? 'h-[inherit] bg-black/70 backdrop-blur-sm' : 'bg-transparent h-[inherit]'} ${isOpen ? 'bg-transparent' : ''}`}>
-      <div className="h-[inherit] flex max-w-7xl items-center mx-auto px-6 pt-3 justify-between z-20 relative">
+    <header className={`w-[101%] mx-auto z-40 fixed duration-200 ${scrolled ? 'h-[inherit] bg-black/70 backdrop-blur-sm' : 'bg-transparent h-[inherit]'} ${isOpen ? 'bg-transparent' : ''}`}>
+      <div className="h-[inherit] flex max-w-7xl items-center mx-auto px-6 justify-between z-20 relative">
         <Link 
           href="/" 
           className="relative flex items-center cursor-none" 
@@ -97,12 +97,12 @@ const Navbar = () => {
         <motion.div
             initial="hidden"
             animate="visible"
-            className={`relative overflow-hidden`}
+            className={`relative overflow-hidden lg:hidden`}
           >
           <motion.div
             variants={burgerVariants}
             id="burger-button"
-            className="flex items-center p-3 duration-200 cursor-none hover:scale-110 lg:hidden"
+            className="flex items-center p-3 duration-200 cursor-none hover:scale-110"
             onClick={toggleNav}
             >
             <span className="mr-2 text-white">{!isOpen ? 'MENU' : 'SCHLIEßEN'}</span>

@@ -15,7 +15,7 @@ const MobileNavContent = ({toggleNav}) => {
 
   return (
     <motion.div
-      className="absolute top-0 left-0 z-10 w-full h-screen overflow-hidden bg-zinc-900 lg:hidden"
+      className="absolute top-0 left-0 z-10 w-full h-screen overflow-hidden bg-darkgray/70 backdrop-blur-md lg:hidden"
       id="navcontent"
       initial={{ y: '-100%' }}
       animate={{ y: 0 }}
