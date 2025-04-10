@@ -1,6 +1,6 @@
 import localFont from 'next/font/local'
 import "./globals.css"
-import Navbar from "./components/layout/Navbar"
+import Navbar from "./components/layout/navigation/Navbar"
 import { ViewTransitions } from "next-view-transitions"
 import CustomCursor from './components/layout/utils/CustomCursor'
 import Footer from './components/layout/Footer'

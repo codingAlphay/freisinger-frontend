@@ -29,7 +29,7 @@ const slides = [
   {
     id: 2,
     type: 'image',
-    url: '/images/slides/slide1.jpg',
+    url: '/images/slides/slide1.JPG',
     alt: 'Slider1',
     title: 'Individuelle',
     title2: 'Geländer'
@@ -37,7 +37,7 @@ const slides = [
   {
     id: 3,
     type: 'image',
-    url: '/images/slides/slide2.jpg',
+    url: '/images/slides/slide2.JPG',
     alt: 'Slider2',
     title: 'GLAS',
     title2: 'GELÄNDER'

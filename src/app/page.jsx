@@ -84,9 +84,9 @@ export default function Home() {
                   </FadeInY>
                 </motion.div>
               </div> */}
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {wohndesignItems.map((item, index) => (
-                <div key={item.id} className="inline-block cursor-nonepointer group">
+                <div key={item.id} className="inline-block cursor-none group">
                   <FadeInY value={50} delay={0.05 * index}>
                     <SubTitle className={"font-extralight tracking-wide group-hover:font-normal transition-all"}>
                       {item.title}
