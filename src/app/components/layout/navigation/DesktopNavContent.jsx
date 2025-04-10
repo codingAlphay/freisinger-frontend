@@ -1,8 +1,10 @@
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { MENU_ITEMS } from './Navbar'
+import { useState } from 'react'
 
-const DesktopNavContent = ({scrolled, router, pageAnimation}) => {
+const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}) => {
+    const [showServicesPanel, setShowServicesPanel] = useState(false);
 
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -32,29 +34,32 @@ const DesktopNavContent = ({scrolled, router, pageAnimation}) => {
             {MENU_ITEMS.map((item) => {
             if (item.isServices) {
                 return (
-                <motion.li key={item.label} variants={itemVariants} className="relative">
-                    <span className="relative p-1 pb-10 text-white transition-all duration-300 group navitem hover:text-primary">
-                    {item.label}
-                    <div className={`absolute left-0 flex flex-col px-3 py-2 pr-8 duration-300 rounded-md opacity-0 pointer-events-none group-hover:pointer-events-auto bg-zinc-900 top-10 ${
-                        scrolled ? 'group-hover:top-12 group-hover:opacity-100' : 'group-hover:top-7 group-hover:opacity-80'
-                    }`}>
-                        {/* {data?.data?.map((service) => (
-                        <Link
-                            href={'/leistungen/' + service.attributes.ServiceName}
-                            key={service.attributes.ServiceName}
-                            className="cursor-none w-full py-1.5 text-white border-b border-primary border-opacity-10 last:border-none"
-                        >
-                            <div className="flex items-center duration-300 hover:translate-x-2 hover:text-primary">
-                            <span className="mr-1 text-lg text-primary">&raquo</span>
-                            <div className="translate-y-[1px] whitespace-nowrap">
-                                {service.attributes.ServiceName}
-                            </div>
-                            </div>
-                        </Link>
-                        ))} */}
-                    </div>
+                <motion.li 
+                    key={item.label} 
+                    variants={itemVariants} 
+                    className="relative flex items-center group"
+                    onMouseEnter={() => setShowServicesPanel(true)}
+                    onMouseLeave={() => setShowServicesPanel(false)}
+                >
+                    <span className="p-1 text-white transition-all duration-300 group navitem group-hover:text-primary">
+                        {item.label}
                     </span>
-                    <svg className='absolute -right-3 bottom-[5px]' width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_53_218)"><path d="M3.35958 6.6516e-08L2.0625 1.29663L6.34288 5.50183L2.0625 9.70338L3.35958 11L8.9375 5.50183L3.35958 6.6516e-08Z" fill="#24d9fe"/></g><defs><clipPath id="clip0_53_218"><rect width="11" height="11" fill="white" transform="translate(11) rotate(90)"/></clipPath></defs></svg>
+                    <svg className='ml-1 duration-700 group-hover:rotate-90' width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_53_218)"><path d="M3.35958 6.6516e-08L2.0625 1.29663L6.34288 5.50183L2.0625 9.70338L3.35958 11L8.9375 5.50183L3.35958 6.6516e-08Z" fill="#24d9fe"/></g><defs><clipPath id="clip0_53_218"><rect width="11" height="11" fill="white" transform="translate(11) rotate(90)"/></clipPath></defs></svg>
+                    <AnimatePresence>
+                        {showServicesPanel && (
+                            <motion.div
+                                initial={{ y: '-100%' }}
+                                animate={{ y: 0 }}
+                                exit={{ y: '-100%' }}
+                                transition={{ duration: 0.75, ease: [0.68, 0, 0.32, 1] }}
+                                className="fixed top-0 left-0 w-screen h-[75vh] bg-darkgray/90 backdrop-blur-md z-[-1]"
+                                onMouseEnter={() => setShowServicesPanel(true)}
+                                onMouseLeave={() => setShowServicesPanel(false)}
+                            >
+                                {/* Hier kannst du optional Inhalt der Services-Fläche einfügen */}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </motion.li>
                 )
             } else {
@@ -62,10 +67,10 @@ const DesktopNavContent = ({scrolled, router, pageAnimation}) => {
                 <motion.li key={item.label} variants={itemVariants} className="relative">
                     <Link 
                     href={item.href}
-                    className="relative p-1 text-white transition-all duration-300 cursor-none navitem hover:text-primary"
+                    className={`relative p-1 transition-all duration-300 cursor-none navitem ${pathname === item.href ? 'text-primary' : ' text-white hover:text-primary'}`}
                     onClick={(e) => {
                         e.preventDefault()
-                        router.push(item.href, {
+                        transitionRouter.push(item.href, {
                         onTransitionReady: pageAnimation,
                         })
                     }}
@@ -81,7 +86,6 @@ const DesktopNavContent = ({scrolled, router, pageAnimation}) => {
             className={`order-1 overflow-hidden ${scrolled ? "my-2" : "mb-2" }`} 
             initial="hidden"
             animate="visible"
-            // Nur beim allerersten Rendern den initial-Wert setzen – danach nicht mehr#
         >
             <motion.div variants={socialVariants} className='flex space-x-1'>
             <a href="" className={`duration-500 cursor-none bg-darkgray hover:bg-primary group aspect-square ${scrolled ? "p-1" : "p-2"}`}>
@@ -95,7 +99,7 @@ const DesktopNavContent = ({scrolled, router, pageAnimation}) => {
                 className={`text-sm uppercase duration-500 cursor-none bg-darkgray hover:bg-primary hover:text-darkgray ${scrolled ? "p-1" : "p-2"}`}
                 onClick={(e) => {
                 e.preventDefault()
-                router.push("/kontakt", {
+                transitionRouter.push("/kontakt", {
                     onTransitionReady: pageAnimation,
                 })
                 }}
@@ -107,7 +111,7 @@ const DesktopNavContent = ({scrolled, router, pageAnimation}) => {
                 className='hidden p-2 duration-500 cursor-none bg-primary-exklusiv hover:bg-darkgray hover:text-primary'
                 onClick={(e) => {
                 e.preventDefault()
-                router.push("/kontakt", {
+                transitionRouter.push("/kontakt", {
                     onTransitionReady: pageAnimation,
                 })
                 }}

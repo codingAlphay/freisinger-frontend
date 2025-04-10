@@ -10,21 +10,21 @@ import { FadeInY } from "./components/layout/utils/FadeIn";
 import Image from "next/image";
 
 export const wohndesignItems = [
-  { id: 1, title: 'Stahlbau', image: '/images/services/stahlbau.jpg' },
+  { id: 1, title: 'Stahlbau', image: '/images/services/stahlbau.JPG' },
   { id: 2, title: 'Balkon/Geländer', image: '/images/services/balkon.jpg' },
-  { id: 3, title: 'Einfahrtstore', image: '/images/services/tore.jpg' },
-  { id: 4, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.jpg' },
-  { id: 5, title: 'Stahlbau', image: '/images/services/stahlbau.jpg' },
+  { id: 3, title: 'Einfahrtstore', image: '/images/services/tore.JPG' },
+  { id: 4, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.JPG' },
+  { id: 5, title: 'Stahlbau', image: '/images/services/stahlbau.JPG' },
   { id: 6, title: 'Balkon/Geländer', image: '/images/services/balkon.jpg' },
-  { id: 7, title: 'Einfahrtstore', image: '/images/services/tore.jpg' },
-  { id: 8, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.jpg' },
-  { id: 9, title: 'Stahlbau', image: '/images/services/stahlbau.jpg' },
+  { id: 7, title: 'Einfahrtstore', image: '/images/services/tore.JPG' },
+  { id: 8, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.JPG' },
+  { id: 9, title: 'Stahlbau', image: '/images/services/stahlbau.JPG' },
   { id: 10, title: 'Balkon/Geländer', image: '/images/services/balkon.jpg' },
-  { id: 11, title: 'Einfahrtstore', image: '/images/services/tore.jpg' },
-  { id: 12, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.jpg' },
-  { id: 13, title: 'Stahlbau', image: '/images/services/stahlbau.jpg' },
+  { id: 11, title: 'Einfahrtstore', image: '/images/services/tore.JPG' },
+  { id: 12, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.JPG' },
+  { id: 13, title: 'Stahlbau', image: '/images/services/stahlbau.JPG' },
   { id: 14, title: 'Balkon/Geländer', image: '/images/services/balkon.jpg' },
-  { id: 15, title: 'Einfahrtstore', image: '/images/services/tore.jpg' },
+  { id: 15, title: 'Einfahrtstore', image: '/images/services/tore.JPG' },
   { id: 16, title: 'Glasüberdachung', image: '/images/services/glasüberdachung.jpg' },
 ];
 

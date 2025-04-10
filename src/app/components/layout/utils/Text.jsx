@@ -1,6 +1,6 @@
 export const SliderTitle = ({children, className}) => {
     return (
-        <h1 className={`text-8xl font-bold ${className}`}>{children}</h1>
+        <h1 className={`text-4xl md:text-8xl font-bold ${className}`}>{children}</h1>
     )
 }
 

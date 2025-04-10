@@ -85,14 +85,14 @@ export default function HeroSlider() {
                   transition={{ duration: 1.7, delay: 0.3, ease: [0.89, 0, 0.11, 1] }}
                   className=''
                 >
-                    <Button className={"ml-24 mt-6 group"}>Mehr erfahren</Button>
+                    <Button className={"ml-8 md:ml-24 mt-6 group"}>Mehr erfahren</Button>
                   </motion.div>
                 </motion.div>
                 <motion.div 
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1.7, ease: [0.89, 0, 0.11, 1] }}
-                  className='absolute z-20 w-56 border-t-4 h-72 -top-8 border-white/80 left-16 bg-darkgray/60'
+                  className='absolute z-20 h-48 border-t-4 w-42 md:w-56 md:h-72 -top-8 border-white/80 left-5 md:left-16 bg-darkgray/60'
                 />
               </div>
             </Container>

@@ -6,6 +6,7 @@ import { useTransitionRouter } from "next-view-transitions"
 import { motion, AnimatePresence } from 'framer-motion'
 import DesktopNavContent from './DesktopNavContent'
 import MobileNavContent from './MobileNavContent'
+import { usePathname } from 'next/navigation'
 
 export const MENU_ITEMS = [
   { label: 'Metallbau Freisinger', href: '/unternehmen' },
@@ -19,10 +20,20 @@ export const MENU_ITEMS = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isOpen, setOpen] = useState(false)
-  const router = useTransitionRouter()
+  const transitionRouter = useTransitionRouter()
+  const pathname = usePathname()
   
   const logoVariants = {
     hidden: { opacity: 0, y: 80 },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.9, ease: [0.89, 0, 0.11, 1] }
+    }
+  }
+
+  const burgerVariants = {
+    hidden: { opacity: 0, y: 38 },
     visible: { 
       opacity: 1,
       y: 0,
@@ -58,7 +69,7 @@ const Navbar = () => {
           onClick={(e) => {
             e.preventDefault()
             isOpen ? toggleNav : () => setOpen(false)
-            router.push("/", {
+            transitionRouter.push("/", {
               onTransitionReady: pageAnimation,
             })
           }}
@@ -82,18 +93,25 @@ const Navbar = () => {
             </motion.div>
           </motion.div>
         </Link>
-        <DesktopNavContent scrolled={scrolled} router={router} pageAnimation={pageAnimation} />
-        <div
-          id="burger-button"
-          className="flex items-center p-3 duration-200 cursor-none hover:scale-110 lg:hidden"
-          onClick={toggleNav}
+        <DesktopNavContent scrolled={scrolled} transitionRouter={transitionRouter} pathname={pathname} pageAnimation={pageAnimation} />
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            className={`relative overflow-hidden`}
           >
-          <span className="mr-2 text-white">{!isOpen ? 'MENU' : 'SCHLIEßEN'}</span>
-          <div className={`grid grid-cols-2 gap-1 duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`}>
-              <div className={`w-1 h-1 p-1 duration-300 rounded-full ${isOpen ? 'bg-primary' : 'bg-white'}`} />
-              <div className={`w-1 h-1 p-1 duration-300 rounded-full ${isOpen ? 'bg-primary' : 'bg-white'}`} />
-          </div>
-        </div>
+          <motion.div
+            variants={burgerVariants}
+            id="burger-button"
+            className="flex items-center p-3 duration-200 cursor-none hover:scale-110 lg:hidden"
+            onClick={toggleNav}
+            >
+            <span className="mr-2 text-white">{!isOpen ? 'MENU' : 'SCHLIEßEN'}</span>
+            <div className={`grid grid-cols-2 gap-1 duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`}>
+                <div className={`w-1 h-1 p-1 duration-300 rounded-full ${isOpen ? 'bg-primary' : 'bg-white'}`} />
+                <div className={`w-1 h-1 p-1 duration-300 rounded-full ${isOpen ? 'bg-primary' : 'bg-white'}`} />
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
       <AnimatePresence>
         {isOpen && <MobileNavContent toggleNav={toggleNav} />}
@@ -106,7 +124,7 @@ const pageAnimation = () => {
   document.documentElement.animate(
     [
       { opacity: 1, scale: 1, transform: "translateY(0)", cursor: "none" },
-      { opacity: 0, scale: 0.9, transform: "translateY(-100px)", cursor: "none" }
+      { opacity: 0, scale: 0.95, transform: "translateY(-100px)", cursor: "none" }
     ],
     {
       duration: 800,

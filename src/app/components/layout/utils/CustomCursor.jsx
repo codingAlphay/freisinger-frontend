@@ -23,7 +23,7 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="custom-cursor"
+      className="hidden sm:block custom-cursor"
       style={{
         x: cursorX,
         y: cursorY,
