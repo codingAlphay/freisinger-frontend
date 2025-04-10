@@ -10,7 +10,7 @@ import { usePathname } from 'next/navigation'
 
 export const MENU_ITEMS = [
   { label: 'Metallbau Freisinger', href: '/unternehmen' },
-  { label: 'Maschinenpark', href: '/maschinenpark' },
+  { label: 'Maschinenpark', href: '/maschinen' },
   { label: 'Aktuelles', href: '/aktuelles' },
   { label: 'Zertifikate', href: '/zertifikate' },
   { label: 'Leistungen', isServices: true },
