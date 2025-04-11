@@ -115,3 +115,16 @@ video {
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171716;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #24d9fe;
+}
+

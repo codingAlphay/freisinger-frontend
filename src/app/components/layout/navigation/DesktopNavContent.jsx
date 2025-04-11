@@ -64,7 +64,7 @@ const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}
                                 <PageContainer>
                                     <div className='grid grid-cols-2'>
                                         <div>
-                                            {wohndesignItems.slice(0, Math.floor(wohndesignItems.length / 4)).map((item, index) => (
+                                            {wohndesignItems.slice(0, Math.floor(wohndesignItems.length / 2)).map((item, index) => (
                                                 <div 
                                                 key={item.id}
                                                 onMouseEnter={() => setActiveImage(item.image)}
@@ -124,7 +124,7 @@ const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}
             initial="hidden"
             animate="visible"
         >
-            <motion.div variants={socialVariants} className={`flex ${scrolled ? "space-x-2.5" : "space-x-1" }`} >
+            <motion.div variants={socialVariants} className={`flex ${scrolled ? "space-x-2.5 py-0.5" : "space-x-1" }`} >
             <a href="" className={`duration-500 cursor-none bg-darkgray hover:bg-primary group aspect-square ${scrolled ? "p-1" : "p-2"}`}>
                 <svg width="20" height="21" viewBox="0 0 20 21" className={`duration-500 ${scrolled && "scale-90"}`} fill="none" xmlns="http://www.w3.org/2000/svg"><g clipPath="url(#clip0_58_47)"><path className='duration-500 group-hover:fill-darkgray' fillRule="evenodd" clipRule="evenodd" d="M4.41263 0.551697H15.8848C18.1481 0.551697 19.982 2.38536 19.982 4.64652V16.112C19.982 18.3732 18.1481 20.2069 15.8848 20.2069H13.8862V12.5962H16.4428L16.8255 9.62993H13.8862V7.73566C13.8862 6.87739 14.1246 6.29183 15.3571 6.29183L16.9287 6.29101V3.63756C16.6567 3.60152 15.7242 3.52045 14.6384 3.52045C12.3718 3.52045 10.8206 4.90286 10.8206 7.44165V9.62911H8.25744V12.5954H10.8206V20.2069H4.41263C2.15015 20.2069 0.31543 18.3732 0.31543 16.112V4.64652C0.31543 2.38536 2.15015 0.551697 4.41263 0.551697Z" fill="#24d9fe"/></g><defs><clipPath id="clip0_58_47"><rect width="19.6665" height="19.6552" fill="white" transform="translate(0.31543 0.551697)"/></clipPath></defs></svg>
             </a>
@@ -133,7 +133,7 @@ const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}
             </a>
             <Link
                 href={"/kontakt"}
-                className={`text-sm uppercase duration-500 cursor-none bg-darkgray hover:bg-primary hover:text-darkgray ${scrolled ? "p-1" : "p-2"}`}
+                className={`text-sm uppercase duration-500 cursor-none bg-darkgray hover:bg-primary hover:text-darkgray ${scrolled ? "p-1 px-3" : "p-2 px-4"}`}
                 onClick={(e) => {
                 e.preventDefault()
                 transitionRouter.push("/kontakt", {
