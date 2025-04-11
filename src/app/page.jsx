@@ -84,7 +84,7 @@ export default function Home() {
             <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
               {wohndesignItems.map((item, index) => (
                 <div key={item.id} className="inline-block cursor-none group">
-                  <FadeInY value={50} className={"border-t-2 border-primary/60"} delay={1 + 0.1 * index}>
+                  <FadeInY value={50} className={"border-t-2 border-primary/60"} delay={.5 + 0.1 * index}>
                     <div className="relative flex items-end justify-end w-full overflow-hidden aspect-video">
                       <SubTitle className={"font-extrabold tracking-wide transition-all absolute top-3 left-3 z-10"}>
                         {item.title}
