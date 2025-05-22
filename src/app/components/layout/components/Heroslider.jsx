@@ -7,44 +7,27 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import { Container } from './utils/Container'
-import { SliderTitle } from './utils/Text'
+import { Container } from '../../utils/Container'
+import { SliderTitle } from '../../utils/Text'
 import { motion } from 'framer-motion'
-import { Button } from './utils/Button'
+import { Button } from '../../utils/Button'
 
 const VideoPlayer = dynamic(
-  () => import('./utils/Videoplayer').then((mod) => mod.default),
+  () => import('../../utils/Videoplayer').then((mod) => mod.default),
   { ssr: false, loading: () => <div className="w-full h-screen" /> }
 )
 
-// Array mit den Slide-Daten
-const slides = [
-  {
-    id: 1,
-    type: 'video',
-    url: '/images/slides/video3.mp4',
-    title: 'Experten im',
-    title2: 'Metallbau'
-  },
-  {
-    id: 2,
-    type: 'image',
-    url: '/images/slides/slide1.JPG',
-    alt: 'Slider1',
-    title: 'Individuelle',
-    title2: 'Geländer'
-  },
-  {
-    id: 3,
-    type: 'image',
-    url: '/images/slides/slide2.JPG',
-    alt: 'Slider2',
-    title: 'GLAS',
-    title2: 'GELÄNDER'
-  }
-]
+export default function HeroSlider({ data }) {
+  const slides = data.map(item => ({
+    id: item.id,
+    type: item.carouselImage.mime.startsWith('video') ? 'video' : 'image',
+    url:  item.carouselImage.url,
+    alt:  item.carouselImage.alternativeText || item.carouselImage.name,
+    title: item.carouselFirstTitle,
+    title2: item.carouselSecondTitle,
+    link: item.carouselLink,
+  }));
 
-export default function HeroSlider() {
   return (
     <div className="relative h-screen bg-primary">
       <Swiper
@@ -85,7 +68,7 @@ export default function HeroSlider() {
                   transition={{ duration: 1.7, delay: 0.3, ease: [0.89, 0, 0.11, 1] }}
                   className=''
                 >
-                    <Button className={"ml-8 md:ml-24 mt-6 group"}>Mehr erfahren</Button>
+                    <Button destination={slide.link} className={"ml-8 md:ml-24 mt-6 group"}>Mehr erfahren</Button>
                   </motion.div>
                 </motion.div>
                 <motion.div 

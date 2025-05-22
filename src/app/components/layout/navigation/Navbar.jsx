@@ -17,11 +17,18 @@ export const MENU_ITEMS = [
   { label: 'Karriere', href: '/karriere' },
 ]
 
-const Navbar = () => {
+const Navbar = ({data}) => {
   const [scrolled, setScrolled] = useState(false)
   const [isOpen, setOpen] = useState(false)
   const transitionRouter = useTransitionRouter()
   const pathname = usePathname()
+
+  const serviceItems = data.map(service => ({
+    id: service.id,
+    title: service.displayName,
+    image: service.mainImage.url,
+    url: "/leistungen/"+service.serviceName
+  }))
   
   const logoVariants = {
     hidden: { opacity: 0, y: 80 },
@@ -93,7 +100,7 @@ const Navbar = () => {
             </motion.div>
           </motion.div>
         </Link>
-        <DesktopNavContent scrolled={scrolled} transitionRouter={transitionRouter} pathname={pathname} pageAnimation={pageAnimation} />
+        <DesktopNavContent serviceItems={serviceItems} scrolled={scrolled} transitionRouter={transitionRouter} pathname={pathname} pageAnimation={pageAnimation} />
         <motion.div
             initial="hidden"
             animate="visible"

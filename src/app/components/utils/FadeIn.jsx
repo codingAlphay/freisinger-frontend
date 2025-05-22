@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export const FadeIn = ({ children, className, value, key, id, delay = 0 }) => {
     return (
-        <AnimatePresence 
-            key={key}>
+        // <AnimatePresence key={key}>
             <motion.div
                 id={id}
                 key={key}
@@ -18,14 +17,15 @@ export const FadeIn = ({ children, className, value, key, id, delay = 0 }) => {
                 className={className}>
                 {children}
             </motion.div>
-        </AnimatePresence>
+        // </AnimatePresence>
     )
 }
 
 export const FadeInY = ({ key, children, className, value, delay = 0 }) => {
     return (
-        <AnimatePresence>
+        // <AnimatePresence key={key}>
             <motion.div
+                key={key}
                 transition={{ duration: 0.6, delay: delay }}
                 initial="hidden"
                 whileInView="visible"
@@ -37,6 +37,6 @@ export const FadeInY = ({ key, children, className, value, delay = 0 }) => {
                 className={className}>
                 {children}
             </motion.div>
-        </AnimatePresence>
+        // </AnimatePresence>
     )
 }

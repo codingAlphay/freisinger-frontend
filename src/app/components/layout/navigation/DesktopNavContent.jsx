@@ -3,11 +3,11 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MENU_ITEMS } from './Navbar'
 import { useState } from 'react'
-import { PageContainer } from '../utils/Container'
-import { wohndesignItems } from 'src/app/page'
-import { SubTitle } from '../utils/Text'
+import { PageContainer } from '../../utils/Container'
+import { Title, SubTitle } from '../../utils/Text'
+import { FadeInY } from '../../utils/FadeIn'
 
-const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}) => {
+const DesktopNavContent = ({ serviceItems, scrolled, pathname, transitionRouter, pageAnimation }) => {
     const [showServicesPanel, setShowServicesPanel] = useState(false)
     const [activeImage, setActiveImage] = useState("/images/slides/slide1.JPG")
 
@@ -16,16 +16,16 @@ const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}
         visible: { 
           opacity: 1,
           y: 0,
-          transition: { duration: 1.9, ease: [0.89, 0, 0.11, 1] }
+          transition: { duration: 1.3, ease: [0.89, 0, 0.11, 1] }
         }
       }
-      
+    
     const socialVariants = {
         hidden: { opacity: 0, y: 40 },
         visible: { 
             opacity: 1,
             y: 0,
-            transition: { duration: 1.9, delay: .3, ease: [0.89, 0, 0.11, 1] }
+            transition: { duration: 1.3, delay: .3, ease: [0.89, 0, 0.11, 1] }
         }
     }
       
@@ -62,22 +62,25 @@ const DesktopNavContent = ({scrolled, pathname, transitionRouter, pageAnimation}
                                 onMouseLeave={() => setShowServicesPanel(false)}
                             >
                                 <PageContainer>
-                                    <div className='grid grid-cols-2'>
-                                        <div>
-                                            {wohndesignItems.slice(0, Math.floor(wohndesignItems.length / 2)).map((item, index) => (
-                                                <div 
+                                    <Title>Leistungen</Title>
+                                    <div className='grid grid-cols-2 gap-x-8 items-center'>
+                                        <div className='grid grid-cols-2 gap-x-8'>
+                                            {serviceItems.map((item) => (
+                                                <Link
                                                 key={item.id}
+                                                href={item.url}
                                                 onMouseEnter={() => setActiveImage(item.image)}
                                                 onMouseLeave={() => setActiveImage("/images/slides/slide1.JPG")}
-                                                className="p-2 group/service"
+                                                onClick={() => setShowServicesPanel(false)}
+                                                className="block p-2 py-4 group/service border-y-[1px] border-white/10 hover:bg-zinc-800/10 cursor-none"
                                                 >
-                                                    <SubTitle className={"text-white group-hover/service:text-primary"}>
+                                                    <SubTitle className={"text-white group-hover/service:text-primary group-hover/service:translate-x-3 duration-300 ease-in-out"}>
                                                         {item.title}
                                                     </SubTitle>
-                                                </div>
+                                                </Link>
                                             ))}
                                         </div>
-                                        <div className="relative w-full aspect-video">
+                                        <div className="relative w-full aspect-[3/2]">
                                             <AnimatePresence mode="wait">
                                                 <motion.div
                                                 key={activeImage}

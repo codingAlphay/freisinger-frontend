@@ -1,6 +1,6 @@
-import PageWrapper from "../components/full/PageTransition";
-import { Container } from "../components/layout/utils/Container"
-import { Title, SubTitle, Text} from "../components/layout/utils/Text";
+import PageWrapper from "../components/utils/PageTransition";
+import { Container } from "../components/utils/Container"
+import { Title, SubTitle, Text} from "../components/utils/Text";
 
 export default function Home() {
   return (
