@@ -8,7 +8,7 @@ import ExpoSlider from "./components/ExpoSlider"
 
 export default function ServiceLayout({ data }) {
 
-    const images = data.imageSlider?.map(image => ({
+    const images = data?.imageSlider?.map(image => ({
         url: image.url
     }))
 
@@ -43,7 +43,7 @@ export default function ServiceLayout({ data }) {
                 </PageContainer>
             </div>
             <PageContainer className={"my-32"}>
-                {data.infoBlock.map((item, idx) => (
+                {data.infoBlock && data.infoBlock.map((item, idx) => (
                     <div key={idx} className="my-20">
                         <FadeInY value={50} className={""}>
                             <div className="grid items-center gap-8 md:grid-cols-2">
@@ -68,9 +68,11 @@ export default function ServiceLayout({ data }) {
                     </div>
                 ))}
             </PageContainer>
-            <div className="max-w-4xl mx-auto h-[50vh] px-6 my-28">
-                <ExpoSlider images={images}/>
-            </div>
+            {data.imageSlider && 
+                <div className="max-w-4xl mx-auto h-[50vh] px-6 my-28">
+                    <ExpoSlider images={images}/>
+                </div>
+            }
         </>
     )
 }
