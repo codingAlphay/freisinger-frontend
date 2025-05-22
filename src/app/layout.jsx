@@ -67,7 +67,7 @@ export const metadata = {
 }
 
 export default async function RootLayout({ children }) {
-  const fetchData = await fetch('http://localhost:1337/api/services?populate=*')
+  const fetchData = await fetch(`${process.env.PUBLIC_API_URL}/api/services?populate=*`)
   const { data } = await fetchData.json()
 
   return (

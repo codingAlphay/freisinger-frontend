@@ -9,7 +9,7 @@ export const SliderTitle = ({children, className}) => {
 
 export const Title = ({children, className}) => {
     return (
-        <h1 className={`${className} text-2xl md:text-4xl tracking-wide`}>{children}</h1>
+        <h1 className={`${className} text-2xl md:text-3xl tracking-wide`}>{children}</h1>
     )
 }
 
@@ -21,7 +21,7 @@ export const SubTitle = ({children, className}) => {
 
 export const Text = ({children, className}) => {
     return (
-        <div className={`${className} text-white/70`}>
+        <div className={`${className} text-white/70 text-sm`}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {children}
             </ReactMarkdown>

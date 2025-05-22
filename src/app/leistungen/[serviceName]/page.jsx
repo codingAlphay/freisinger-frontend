@@ -5,7 +5,7 @@ export const revalidate = 60
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-  const res = await fetch('http://localhost:1337/api/services?fields[0]=serviceName')
+  const res = await fetch(`${process.env.PUBLIC_API_URL}/api/services?fields[0]=serviceName`)
   const { data } = await res.json()
 
   return data.map(svc => ({
@@ -15,8 +15,8 @@ export async function generateStaticParams() {
 
 export default async function ServicePage({ params }) {
   const { serviceName } = await params
-  
-    const res = await fetch(`http://localhost:1337/api/services?filters[serviceName][$eq]=${serviceName}&populate[infoBlock][populate]=*&populate[imageSlider][populate]=*&populate[mainImage][populate]=*`)
+
+  const res = await fetch(`${process.env.PUBLIC_API_URL}/api/services?filters[serviceName][$eq]=${serviceName}&populate[infoBlock][populate]=*&populate[imageSlider][populate]=*&populate[mainImage][populate]=*`)
 
   const { data } = await res.json()
   const service = data[0]

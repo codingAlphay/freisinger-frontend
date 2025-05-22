@@ -36,7 +36,7 @@ export default function Homepage({ data }) {
             </FadeInY>
             <FadeInY value={100} className={"my-8 max-w-3xl mx-auto"}>
                 <div
-                  className="relative overflow-hidden whitespace-nowrap py-8"
+                  className="relative py-8 overflow-hidden whitespace-nowrap"
                   style={{
                     WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
                     maskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)"
@@ -48,11 +48,11 @@ export default function Homepage({ data }) {
                     transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
                   >
                     {[...data.partners, ...data.partners, ...data.partners, ...data.partners, ...data.partners].map((partner,id) => (
-                      <div key={id} className="flex-shrink-0 h-10 mx-8 opacity-45 pointer-events-none">
+                      <div key={id} className="flex-shrink-0 h-10 mx-8 pointer-events-none opacity-45">
                         <img
                           src={partner.url}
                           alt={partner.name}
-                          className="h-full pointer-events-none object-contain grayscale"
+                          className="object-contain h-full pointer-events-none grayscale"
                         />
                       </div>
                     ))}
@@ -90,7 +90,7 @@ export default function Homepage({ data }) {
                     </FadeInY>
                     </motion.div>
                 </div> */}
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto w-full">
+                <div className="grid w-full max-w-4xl gap-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
                 {serviceItems.map((item, index) => (
                     <div key={item.id} className="inline-block cursor-none group">
                         <Link href={item.url} className="cursor-none">
@@ -100,7 +100,7 @@ export default function Homepage({ data }) {
                                     {item.title}
                                 </SubTitle>
                                 <Image src={item.image} alt={item.title} className="object-cover duration-700 group-hover:scale-125" fill />
-                                <Button className={"p-2 pb-2 scale-90 relative z-10"}>Mehr Erfahren</Button>
+                                <Button className={" scale-[0.85] relative z-10"}>Mehr Erfahren</Button>
                                 <div className="absolute inset-0 z-[5] w-full transition-all bg-gradient-to-b from-zinc-950/60 group-hover:from-zinc-950/80 to-transparent"></div>
                                 <div className="absolute inset-0 z-[5] w-full transition-all bg-gradient-to-t from-zinc-950/80 group-hover:from-zinc-950/80 to-transparent"></div>
                                 </div>

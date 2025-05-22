@@ -50,10 +50,10 @@ export default function CompanyContent({ data }) {
                 {description}
                 </Text>
             </FadeInY>
-            <div className='grid w-full max-w-lg grid-cols-2 gap-8 mx-auto my-12 justify-center'>
+            <div className='grid justify-center w-full max-w-lg grid-cols-2 gap-8 mx-auto my-12'>
                 {personaBlock.map((persona, idx) => (
                   <div key={persona.id}>
-                    <FadeInY value={100} className='group'>
+                    <FadeInY value={100} delay={0.6} className='group'>
                       <div className='relative w-full h-72 aspect-[2/3]'>
                         <Image 
                           alt={persona.personaName} 
