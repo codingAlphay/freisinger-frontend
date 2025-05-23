@@ -5,7 +5,6 @@ import { MENU_ITEMS } from './Navbar'
 import { useState } from 'react'
 import { PageContainer } from '../../utils/Container'
 import { Title, SubTitle } from '../../utils/Text'
-import { FadeInY } from '../../utils/FadeIn'
 
 const DesktopNavContent = ({ serviceItems, scrolled, pathname, transitionRouter, pageAnimation }) => {
     const [showServicesPanel, setShowServicesPanel] = useState(false)
@@ -63,7 +62,7 @@ const DesktopNavContent = ({ serviceItems, scrolled, pathname, transitionRouter,
                             >
                                 <PageContainer>
                                     <Title>Leistungen</Title>
-                                    <div className='grid grid-cols-2 gap-x-8 items-center'>
+                                    <div className='grid items-center grid-cols-2 gap-x-8'>
                                         <div className='grid grid-cols-2 gap-x-8'>
                                             {serviceItems.map((item) => (
                                                 <Link

@@ -121,7 +121,7 @@ const Navbar = ({data}) => {
         </motion.div>
       </div>
       <AnimatePresence>
-        {isOpen && <MobileNavContent toggleNav={toggleNav} />}
+        {isOpen && <MobileNavContent serviceItems={serviceItems} toggleNav={toggleNav} />}
       </AnimatePresence>
     </header>
   )  

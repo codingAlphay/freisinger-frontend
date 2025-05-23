@@ -16,7 +16,7 @@ const Footer = ({data}) => {
   return (
     <footer className="p-10 pt-32 bg-darkbg">
       <div className='max-w-6xl px-6 mx-auto'>
-        <div className="grid items-end w-full grid-cols-1 md:grid-cols-3 footer md:flex-row md:gap-x-32 text-neutral-content text-sm rounded-md">
+        <div className="grid items-end w-full grid-cols-1 text-sm rounded-md md:grid-cols-3 footer md:flex-row md:gap-x-32 text-neutral-content">
           <div className='flex flex-col w-full'>
             <div className='flex flex-col space-y-1 text-center md:text-left'>
               <Image alt={"Logo"} src={"/images/metallbau-freisinger-logo.png"} className='mx-auto mb-4 md:mx-[unset]' width={210} height={65}/>
@@ -36,13 +36,13 @@ const Footer = ({data}) => {
             <span className="font-extrabold text-white">Zertifikate</span>
             <span className="font-extrabold text-white">Karriere</span>
           </div>
-          <div className='flex flex-col w-full space-y-1 mt-5 md:mt-0'>
+          <div className='flex flex-col w-full mt-5 space-y-1 md:mt-0'>
             <div className='flex flex-col space-y-1.5 text-center text-gray-300 md:text-left'>
               <span className="font-extrabold text-white">Impressum</span>
               <span className="font-extrabold text-white">Datenschutz</span>
               <span className="font-extrabold text-white">Pflegehinweise</span>
               <div>
-                <div onClick={() => setLeistungenOpen(!isLeistungenOpen)} className="relative inline-flex items-center  font-extrabold text-white duration-300 cursor-pointer">
+                <div onClick={() => setLeistungenOpen(!isLeistungenOpen)} className="relative inline-flex items-center font-extrabold text-white duration-300 cursor-pointer">
                   Leistungen
                   <svg className={`ml-1 -right-4 duration-700 ${isLeistungenOpen && "rotate-90"}`} width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0)">
@@ -65,7 +65,7 @@ const Footer = ({data}) => {
                       className="grid grid-cols-2 mt-2"
                     >
                       {serviceItems.map((item, index) => (
-                        <Link href={'/leistungen/'} key={index} className='duration-300 hover:translate-x-2 hover:text-primary'>
+                        <Link href={'/leistungen/'} key={index} className='duration-300 cursor-none hover:translate-x-2 hover:text-primary'>
                           {item.title}
                         </Link>
                       ))}

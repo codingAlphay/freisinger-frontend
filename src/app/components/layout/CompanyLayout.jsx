@@ -83,11 +83,11 @@ export default function CompanyContent({ data }) {
                 {milestoneDescrption}
                 </Text>
             </FadeInY>
-            <div className='grid max-w-2xl grid-cols-12 mx-auto sm:px-8 mb-36'>
+            <div className='grid max-w-2xl grid-cols-12 mx-auto text-sm sm:px-8 mb-36'>
             {milestoneContainer.map((entry, idx) => (
                 <React.Fragment key={entry.id}>
-                    <FadeInY value={100} delay={0.02 * idx} className='col-span-3 text-lg p-1 py-4 font-bold border-b-[1px] border-zinc-800 text-gray-100'>{entry.year}</FadeInY>
-                    <FadeInY value={100} delay={0.02 * idx} className='col-span-9 p-1 py-4 border-b-[1px] border-zinc-800 text-gray-300'>{entry.entry}</FadeInY>
+                    <FadeInY value={100} delay={0.02 * idx} className='col-span-3 text-lg p-1 py-4 font-bold border-y-[1px] border-zinc-800 text-gray-100'>{entry.year}</FadeInY>
+                    <FadeInY value={100} delay={0.02 * idx} className='col-span-9 p-1 py-4 border-y-[1px] border-zinc-800 text-gray-300'>{entry.entry}</FadeInY>
                 </React.Fragment>
                 ))}
             </div>
